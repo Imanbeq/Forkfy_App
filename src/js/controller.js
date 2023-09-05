@@ -7,14 +7,11 @@ import paginationView from "./views/paginationView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-const recipeContainer = document.querySelector(".recipe");
-
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
-
 const controlRecipes = async function () {
   try {
+    // 0) Update results view to mar selected search result
+    resultsViews.update(model.getSearchResultsPage());
+
     const id = window.location.hash.slice(1);
 
     if (!id) return;
@@ -64,7 +61,8 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   // Update the recipe view
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 };
 
 const init = function () {
