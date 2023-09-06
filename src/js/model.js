@@ -130,7 +130,18 @@ export const uploadRecipe = async function (newRecipe) {
         const [quantity, unit, decription] = ingArr;
         return { quantity: quantity ? +quantity : null, unit, decription };
       });
-    console.log(ingredients);
+
+    const recipe = {
+      title: newRecipe.title,
+      source_url: newRecipe.sourceUrl,
+      image_url: newRecipe.imageUrl,
+      publisher: newRecipe.bulisher,
+      cooking_time: +newRecipe.cookingTime,
+      servings: +newRecipe.servings,
+      ingredients,
+    };
+
+    console.log(recipe);
   } catch (err) {
     throw err;
   }
